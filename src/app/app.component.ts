@@ -10,6 +10,9 @@ export class AppComponent {
   //persona = nomre{'pepe'}
   flag:boolean = true;
 
+  searchValue: string = '';
+  
+
   movies: string[] = [
     'Los tres Huastecos',
     'Alien',
@@ -18,6 +21,8 @@ export class AppComponent {
     'Pineapple express'
 
   ];
+
+  filteredMovies: string[] = [];
   
   name = 'Aaron'
   constructor(){
@@ -25,10 +30,30 @@ export class AppComponent {
       this.name = 'Jose';
       this.movies.push('Los 3 García');
     },2000);
+    this.filteredMovies = this.movies;
   }
 
-  doOnclick(){
+  doOnclick(e:any){
     console.log('Me pushearon!');
-    this.flag = !this.flag
+    e.preventDefault();
+    
+    //this.flag = !this.flag
+    
+    this.movies.push(this.searchValue);
+    this.searchValue = '';
+
+
   }
+  doSearch(){
+    const searchValue = this.searchValue.toLowerCase();
+    this.filteredMovies = this.movies.filter(item =>{
+      return item.toLowerCase().includes(searchValue);
+    });
+
+  }
+  /*setSearchValue(e:any){
+    console.log('Event'+ e.target.value)
+    this.searchValue = e.target.value;
+    
+  }*/
 }
