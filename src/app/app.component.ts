@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,6 +12,8 @@ export class AppComponent {
   flag:boolean = true;
 
   searchValue: string = '';
+
+  searchTimeOut: any;
   
 
   movies: string[] = [
@@ -45,10 +48,16 @@ export class AppComponent {
 
   }
   doSearch(){
-    const searchValue = this.searchValue.toLowerCase();
+    if(this.searchTimeOut){
+      clearTimeout(this.searchTimeOut);
+    }
+    this.searchTimeOut = setTimeout(()=>{
+      const searchValue = this.searchValue.toLowerCase();
+      console.log('Se hace la busqueda');
     this.filteredMovies = this.movies.filter(item =>{
       return item.toLowerCase().includes(searchValue);
     });
+    },200)
 
   }
   /*setSearchValue(e:any){

@@ -1,0 +1,30 @@
+
+<div>
+    <form [formGroup]="form" >
+        ={{form.valid}}=
+        <div>
+            <input type="text" name="fullname" placeholder="Full name" formControlName="name">
+        </div>
+        <div>
+            <input type="text" name="username" placeholder="Username" formControlName = "username" >
+        </div>
+        <div>
+            <input type="text" name="email" placeholder="Email" formControlName="email">
+        </div>
+        <div>
+            <input [type]="showPassword ? 'text' : 'password'" name="password" placeholder="Password" formControlName="password">
+            <button (click)="toggleShowPassword()">{{showPassword ? 'Hide' :'Show'}}</button>
+        </div>
+        <div>
+            <input type="password" name="confirm_password" placeholder="Confirm password" formControlName="confirm_password" >
+        </div>
+        <div>
+            <button>Sing up</button>
+        </div>
+        <div>
+            Have an account <a routerLink="/login">Log in here</a>
+        </div>
+    </form>
+    
+</div>
+
