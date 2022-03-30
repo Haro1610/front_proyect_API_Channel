@@ -1,12 +1,12 @@
 <div>
-    <form action="">
+    <form (submit)="login()">
         <div> 
             <label for="username">Username: </label>
-            <input type="text" name="Username" placeholder="Username">
+            <input type="text" [(name)]="credentials.Username" placeholder="Username">
         </div>
         <div> 
             <label for="password">Password: </label>
-            <input type="text" name="password" placeholder="Password">
+            <input type="text" [(name)]="credentials.password" placeholder="Password">
         </div>
         <div>
             <button>Log in</button>

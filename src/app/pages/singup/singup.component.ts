@@ -14,12 +14,15 @@ export class SingupComponent implements OnInit {
   
   constructor(private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
-      'name': ['',Validators.required],
-      'username': ['',Validators.required],
-      'email': ['',Validators.required],
-      'password': ['',Validators.required],
-      'confirm_password' : ['',Validators.required]
-    });
+      name: ['',Validators.required],
+      username: ['',Validators.required],
+      email: ['',[Validators.required,Validators.email]],
+      password: ['',[Validators.required,Validators.minLength(8)]],
+      confirm_password : ['',[Validators.required,Validators.minLength(8)]]
+    },{
+       validators:  [this.matchPasswords.bind(this)]
+    }
+    );
 
    }
 
@@ -30,6 +33,23 @@ export class SingupComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
-  
+  sendData(){
+    if(this.form.valid){
+      const {password, confirm_password} = this.form.getRawValue()
+      console.log('Enviar datos',password,confirm_password);
+    } else{
+      console.log('Error, faltan datos',this.form);
+    }
+  }
+
+  matchPasswords() {
+    if(!this.form) return;
+    const {password, confirm_password} = this.form.getRawValue()
+    if( password == confirm_password){
+      return null;
+    }else{
+      return {passwordMismatch:true}
+    }
+  }
 
 }

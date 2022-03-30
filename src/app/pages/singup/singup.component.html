@@ -1,6 +1,6 @@
 
 <div>
-    <form [formGroup]="form" >
+    <form [formGroup]= "form" (submit)="sendData()" >
         ={{form.valid}}=
         <div>
             <input type="text" name="fullname" placeholder="Full name" formControlName="name">
@@ -19,8 +19,9 @@
             <input type="password" name="confirm_password" placeholder="Confirm password" formControlName="confirm_password" >
         </div>
         <div>
-            <button>Sing up</button>
+            <button [disabled]="form.invalid">Sing up</button>
         </div>
+        <span *ngIf="form.errors && form.errors['passwordMismatch']" >Passwords don't mathc</span>
         <div>
             Have an account <a routerLink="/login">Log in here</a>
         </div>
