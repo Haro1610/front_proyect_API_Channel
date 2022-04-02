@@ -1,5 +1,5 @@
 
-<div>
+<!-- <div>
     <form [formGroup]= "form" (submit)="sendData()" >
         ={{form.valid}}=
         <div>
@@ -27,5 +27,69 @@
         </div>
     </form>
     
-</div>
+</div> -->
 
+<div>
+    <form  [formGroup]= "form" (submit)="sendData()">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Sig in</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-label for="FullName"> Full Name</mat-label>
+                <mat-form-field class="full-width">
+                  <input  matInput type="text" name="fullname" placeholder="Full name" formControlName="name" >
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <mat-label for="username"> User name</mat-label>
+                  <mat-form-field class="full-width">
+                    <input  matInput type="text" name="username" placeholder="Username" formControlName = "username" >
+                  </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <mat-label for="email"> Email</mat-label>
+                  <mat-form-field class="full-width">
+                    <input  matInput type="text" name="email" placeholder="Email" formControlName="email" >
+                  </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <mat-label for="showPassword">Paswword</mat-label>
+                  <mat-form-field class="full-width">
+                    <input  matInput [type]="showPassword ? 'text' : 'password'" name="password" placeholder="Password" formControlName="password" >                    
+                  </mat-form-field>
+                  <button mat-raised-button color="primary"(click)="toggleShowPassword()">{{showPassword ? 'Hide' :'Show'}}</button>       
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <mat-label for="password"> confirm_password</mat-label>
+                  <mat-form-field class="full-width">
+                    <input  matInput type="password" name="confirm_password" placeholder="Confirm password" formControlName="confirm_password" >
+                  </mat-form-field>
+                </div>
+            </div>
+            <div>
+                <span *ngIf="form.errors && form.errors['passwordMismatch']" >Passwords don't mathc</span>
+            </div>                
+          </mat-card-content>
+        
+          <mat-card-actions>
+            <button  mat-raised-button color="primary" [disabled]="form.invalid">Singup</button>
+            <div>
+                Have an account <a routerLink="/login">Log in here</a>
+            </div>
+          </mat-card-actions>
+          
+        </mat-card>
+      </form>
+</div>
+  

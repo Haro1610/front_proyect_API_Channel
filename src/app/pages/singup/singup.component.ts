@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { LoginService } from 'src/app/shared/services/login.service';
 
 @Component({
   selector: 'app-singup',
@@ -12,7 +13,7 @@ export class SingupComponent implements OnInit {
 
   form: FormGroup;
   
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,private api: LoginService) {
     this.form = this.formBuilder.group({
       name: ['',Validators.required],
       username: ['',Validators.required],
@@ -40,6 +41,16 @@ export class SingupComponent implements OnInit {
     } else{
       console.log('Error, faltan datos',this.form);
     }
+  }
+  
+  postData(){
+    if(this.form.valid){
+      console.log(this.form);
+    this.api.sendData(this.form);
+    }else{
+      console.log('Error, no se enviaron los datos',this.form);
+    }
+
   }
 
   matchPasswords() {
