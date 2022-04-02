@@ -14,6 +14,7 @@ export class AuthService {
   
   save(token: string){
     sessionStorage.setItem('token',token);
+    this.loginStatus.next(true);
 
   }
 
@@ -26,6 +27,7 @@ export class AuthService {
   }
 
   remove(): void{
+    this.loginStatus.next(false);
     return sessionStorage.removeItem('token');
 
   }

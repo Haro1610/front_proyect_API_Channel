@@ -1,4 +1,5 @@
 <div>
     <h1>Hola header</h1>
-    <a routerLink="singup">Sing up here</a>
+    <a routerLink="singup">Sing up here</a> |
+    <a *ngIf="isLoggedIn" (click)="logout()">Cerrar secion</a>
 </div>

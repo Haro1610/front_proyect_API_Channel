@@ -10,8 +10,8 @@ import { LoginService } from 'src/app/shared/services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  Username: string = '';
-  pasword: string = '';
+  //Username: string = '';
+  //pasword: string = '';
   credentials: any = {} ;
 
   constructor(private loginService: LoginService,
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   }
 
   logout (){
-    this.authService.remove()
+    this.authService.remove();
   }
 
 }

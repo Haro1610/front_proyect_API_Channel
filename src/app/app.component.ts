@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import * as socketIo from 'socket.io-client';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -34,6 +36,9 @@ export class AppComponent {
       this.movies.push('Los 3 García');
     },2000);
     this.filteredMovies = this.movies;
+  }
+
+  ngOnInit(): void{
   }
 
   doOnclick(e:any){
