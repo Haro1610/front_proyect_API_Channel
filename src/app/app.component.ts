@@ -39,6 +39,7 @@ export class AppComponent {
   }
 
   ngOnInit(): void{
+    //socketIo.io(environment.socketUrl);
   }
 
   doOnclick(e:any){

@@ -5,12 +5,9 @@ import {HttpClientModule} from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatButtonModule } from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +19,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { UsersComponent } from './pages/users/users.component';
 import { PostsComponent } from './pages/posts/posts.component';
 import { ChatComponent } from './pages/chat/chat.component';
+import { UserDetailsComponent } from './pages/user-details/user-details.component';
+import { MaterialModule } from './modules/material/material.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +32,8 @@ import { ChatComponent } from './pages/chat/chat.component';
     NotFoundComponent,
     UsersComponent,
     PostsComponent,
-    ChatComponent
+    ChatComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,14 +42,12 @@ import { ChatComponent } from './pages/chat/chat.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatFormFieldModule,
     MatSelectModule,
     MatCardModule,
-    MatInputModule,
     MatRadioModule,
-    MatButtonModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

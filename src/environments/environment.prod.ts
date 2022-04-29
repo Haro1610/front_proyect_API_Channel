@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl:'https://jsonplaceholder.typicode.com/',
+  socketUrl: 'http://localhost:3000'
+
 };

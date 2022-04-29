@@ -10,31 +10,39 @@ import { environment } from 'src/environments/environment';
 })
 export class ChatComponent implements OnInit {
 
-  constructor() { }
-
-  message: string = "";
-  messages: string[] = [];
+  message: string = '';
+  messages: any[] = [];
   socketClient: any = null;
 
+  constructor() { }
+
   ngOnInit(): void {
-    this.socketClient = socketIo.io(environment.socketUrl);
-    this.socketClient.on('receiveMessages', (data:any)=>{
-      this.messages.push(data);
-      
+    this.socketClient = socketIo.io(environment.socketUrl, {
+      transportOptions: {
+        polling: {
+          extraHeaders: {
+            'Authorization': 'b413a60deaee2999888ba10be872b99fb2e5812a08255e0d98d6656d894341de6684ba30d09bf35d40cfae8d4aa27719'
+          }
+        }
+      }
     });
 
+    this.socketClient.on('newMessage', (data:any) => {
+      console.log('Llego un mensaje', data);
+      this.messages.push(data);
+    });
   }
 
-  send(){
-    console.log('Enviar mensajes');
-    this.messages.push(this.message);
-    this.message="";
-
-    this.socketClient.emit('newMessage',{
+  send() {
+    console.log('Enviar mensaje')
+    this.messages.push({
+      message: this.message,
+      owned: true
+    });
+    this.socketClient.emit('newMessage', {
       message: this.message
     });
     this.message = '';
-    
   }
 
 }

@@ -15,7 +15,8 @@ const routes: Routes = [
   {path: 'singup',component:SingupComponent},
   {path: 'users', component: UsersComponent,canActivate: [AuthGuard]},
   {path: 'chat', component: ChatComponent},
-  {path: 'posts', component: PostsComponent, canActivate: [AuthGuard]},
+  {path: 'posts/:new', component: PostsComponent, canActivate: [AuthGuard]},
+  {path: 'posts/:user', component: PostsComponent, canActivate: [AuthGuard]},
   {path: 'users/:userId/posts', component: PostsComponent,canActivate:[AuthGuard]},
   {path: '**',component:NotFoundComponent, pathMatch:'full'}
 ];

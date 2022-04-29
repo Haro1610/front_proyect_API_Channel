@@ -3,15 +3,17 @@
 <p *ngIf="users.length==0">Cargando...</p>
 
 
-<table *ngIf="users.length">
+<table mat-table *ngIf="users.length">
     <tr>
         <th>Name</th>
         <th>Email</th>
         <td></td>
     </tr>
-    <tr *ngFor="let user of users">
+    <tr [ngClass]="{active:user.id == selectedUser.id}" *ngFor="let user of users" (click)="setSelectUser(user)">
         <td>{{user.name}}</td>
         <td>{{user.email}}</td>
         <td><a routerLink="/posts" [queryParams]="{user: user.id}">ver posts</a></td>
     </tr>
 </table>
+
+<app-user-details [item]="selectedUser" (onUserCleared)="clearUser($event)"></app-user-details>

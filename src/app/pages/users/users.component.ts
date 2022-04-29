@@ -13,6 +13,11 @@ export class UsersComponent implements OnInit {
 
   //private userService;
   users: User[] = [];
+  selectedUser: User ={
+    id:'',
+    name:'',
+    email:''
+  };
 
   constructor(private userService: UserService, ) { 
     console.log(userService);
@@ -31,4 +36,17 @@ export class UsersComponent implements OnInit {
     })
   }
 
+  setSelectUser(user:User){
+    console.log("Usuario seleccionado:", user);
+    this.selectedUser = user;
+  }
+  
+  clearUser(e:User){
+    //this.onUserClear.emit()
+    this.selectedUser = {
+      id:'',
+      name:'',
+      email:'',
+    }
+  }
 }

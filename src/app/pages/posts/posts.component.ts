@@ -25,7 +25,9 @@ export class PostsComponent implements OnInit {
  // }
 
    ngOnInit(): void {
-     this.activatedRoute.queryParams.subscribe(params=>{
+     this.activatedRoute.params.subscribe(params=>{
+       console.log(params);
+       //if(this.userId == params['user']) return;
        console.log('El usuario es :' + params['user']);
        this.userId = params['user'];
        this.getPosts();
